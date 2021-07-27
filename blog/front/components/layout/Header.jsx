@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import NavToggle from '../NavToggle'
 import Styled from 'styled-components'
+import {useContext} from 'react'
+import Store from '../../pages/store/context'
 
 const HeaderContainer = Styled.div`
     display:flex;
@@ -11,6 +13,7 @@ const HeaderContainer = Styled.div`
     box-sizing:border-box;
     border-bottom:1px solid #ddd;
     width:100vw;
+    height:10vh;
 `
 
 const Gnb = Styled.ul`
@@ -29,6 +32,10 @@ const Gnb = Styled.ul`
 `
 
 const Header = () => {
+                                // Store 
+    const globalStore = useContext(Store) // {IsLogin:false}
+                                          // {state:{IsLogin:false},dispatch:()=>{}}
+    const {IsLogin} = globalStore.state
     return (
         <HeaderContainer>
                 {/* 로고와 메뉴 */}
@@ -44,16 +51,19 @@ const Header = () => {
                             <a>글쓰기</a>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/login">
-                            <a>로그인</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/join">
-                            <a>회원가입</a>
-                        </Link>
-                    </li>
+                    {
+                        IsLogin === false
+                        ? <>
+                        <li><Link href="/login"><a>로그인</a></Link></li>
+                        <li><Link href="/join"><a>회원가입</a></Link></li>
+                        </>
+                        : <>
+                        <li><Link href="/logout"><a>로그아웃</a></Link></li>
+                        <li><Link href="/profile"><a>회원정보</a></Link></li>
+                        </>
+                    }
+                    
+                    
                 </Gnb>
                 <NavToggle />
             </HeaderContainer>
