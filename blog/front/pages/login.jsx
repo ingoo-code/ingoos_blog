@@ -2,31 +2,20 @@ import FormLayout from "../components/FormLayout"
 import Head from 'next/head'
 import Router from 'next/router'
 import useInput from '../hooks/useInput'
-
-
-// const useInput2 = (defaultValue) => {
-//     const [value,setValue] = useState(defaultValue)
-//     const onChange = e => {
-//         const {value} = {...e.target}
-//         setValue(value)
-//     }
-
-//     return [
-//         value,
-//         onChange
-//     ]
-// }
-
+import {useDispatch} from 'react-redux'
+import { UserLoginAction } from "../reducers/user"
 
 const Login = () => {
+    const dispatch = useDispatch()
+
     const userid = useInput('') // Object
     const userpw = useInput('') // Object
 
-    // const {userid2,onChangeUserid} = useInput2('')
-    // const {userpw2,onChangeUserpw} = useInput2('')
     const handleSubmit = e => {
         e.preventDefault()
         
+        dispatch(UserLoginAction())
+
         userid.value === "web7722" && userpw.value === "1234"
         ? Router.push('/')
         : alert('아이디와 패스워드가 다릅니다.')
@@ -49,15 +38,4 @@ const Login = () => {
     )
 }
 
-/*
-
-value="ok"
-{...{"value":"ok"}}
-{
-value:"ㅁㄴㅇㄻㄴㅇㄹ"
-onChange:()=>{alert(1)}
-}
-
-value="ㅁㄴㅇㄻㄴㅇㄹ" onChange=()=>{alert(1)}
-*/
 export default Login

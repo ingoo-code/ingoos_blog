@@ -1,35 +1,11 @@
 import Styled from 'styled-components'
 import Link from 'next/link'
-
-const menu = [
-    {
-        id:'1',
-        category:'HTML',
-        url:'/posts/HTML'
-    },
-    {
-        id:'2',
-        category:'대분류메뉴2',
-        url:'/posts/2'
-    },
-    {
-        id:'3',
-        category:'대분류메뉴3',
-        url:'/posts/3'
-    },
-    {
-        id:'4',
-        category:'대분류메뉴4',
-        url:'/posts/4'
-    },
-    {
-        id:'5',
-        category:'대분류메뉴5',
-        url:'/posts/5'
-    },
-]
+import { useSelector } from 'react-redux'
 
 const Accordion = ({visible,handleToggle}) => {
+
+    const {menu} = useSelector( (state)=>state.category )
+
     const handleClick = () => {
         handleToggle()
     }
