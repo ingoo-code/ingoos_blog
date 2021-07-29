@@ -85,7 +85,8 @@ npm install styled-components
 
 # Styled Components 환경설정
 # _document.jsx 만들기 
-
-
 # .babelrc 
+
+# npm install -D babel-plugin-styeld-components
+# npm install next
 

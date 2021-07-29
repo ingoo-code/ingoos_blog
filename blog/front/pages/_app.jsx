@@ -1,8 +1,8 @@
 import '../index.css'
 import Head from 'next/head'
-import Store,{initalState} from './store/context'
+import Store,{initalState} from '../store/context'
 import {useReducer,useContext} from 'react'
-import {reducer} from './store/reducer'
+import {reducer} from '../store/reducer'
 
 
 
