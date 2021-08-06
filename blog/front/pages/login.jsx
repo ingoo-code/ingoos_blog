@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import useInput from '../hooks/useInput'
 import {useDispatch,useSelector} from 'react-redux'
-import { UserLoginAction } from "../reducers/user"
+import { UserLogin_REQUEST } from "../reducers/user"
 import {useEffect} from "react"
 
 const Login = () => {
@@ -16,11 +16,20 @@ const Login = () => {
     const handleSubmit = e => {
         e.preventDefault()
         const data = {
-            userid:userid.value,
-            userpw:userpw.value
+            userid:userid.value, // web7722
+            userpw:userpw.value // 1234
         }
-
-        dispatch(UserLoginAction(data))
+        
+        dispatch(UserLogin_REQUEST(data))
+        /*
+             {
+                type:"USER_LOGIN_REQUEST",
+                data:{
+                    userid:'web7722',
+                    userpw:'1234'
+                }
+            }
+        */
     }
 
     useEffect(()=>{ // componentDidUpdate
